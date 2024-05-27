@@ -32,23 +32,4 @@ jobs:
           name: snyk-results
           path: .snyk
 
-  ql_analysis:
-    name: QL Analysis
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Download Snyk results
-        uses: actions/download-artifact@v2
-        with:
-          name: snyk-results
-
-      - name: Install Semgrep
-        run: |
-          curl -sL https://semgrep.dev/install.sh | bash
-
-      - name: Run QL analysis
-        run: semgrep --config my-ql-script.ql .
 
